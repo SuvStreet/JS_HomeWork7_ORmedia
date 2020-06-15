@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD ES6</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="information">
+        <h1>Главная страница</h1>
+        <form>
+            <!-- <div class="text_decoration">
+                <div class="text_name strong">Имя</div>
+            </div> -->
+        </form>
+    </div>
+
+    <div id="all_info">
+        <h2>Подробная информация</h2>
+        <form>
+            <!-- <div class="detail_info">
+                <div class="details">
+                    <div class="elem">Имя</div>
+                </div>
+            </div>
+            <input type="button" id="mainMenu2" class="buttons" value="Главное меню"> -->
+        </form>
+    </div>
+
+    <div id="create_сomputer">
+        <h1>Добавление/Редактирование текущего устройства</h1>
+        <form>
+            <div class="form_group">
+                <label for="device" class="form_label">Выберите устройство:</label>
+                <select id="device">
+                    <option value="pc" selected>PC</option>
+                    <option value="laptop">Ноутбук</option>
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="year" class="form_label">Год выпуска:</label>
+                <input type="text" id="year" class="form_input" placeholder=" " />
+            </div>
+            <div class="form__group">
+                <label for="processor" class="form_label">Наименование процессора:</label>
+                <input type="text" id="processor" class="form_input" placeholder=" " />
+            </div>
+            <div class="form__group">
+                <label for="typeRam" class="form_label">Объём ОЗУ:</label>
+                <input type="text" id="typeRam" class="form_input" placeholder=" " />
+            </div>
+            <div id="os_btn">
+                <span>Наличие OS:</span>
+                <label for="os_true"><input type="radio" id="os_true" name="os" value="true" checked>Есть</label>
+                <label for="os_false"><input type="radio" id="os_false" name="os" value="false">Нету</label>
+            </div>
+            <div class="form_group">
+                <label for="typeRom" class="form_label">Тип ПЗУ:</label>
+                <select id="typeRom">
+                    <option value="HDD" selected>HDD</option>
+                    <option value="SSD">SSD</option>
+                </select>
+            </div>
+            <div class="form_group">
+                <label for="graphicsСard" class="form_label">Наименование видеокарты:</label>
+                <select id="graphicsСard">
+                    <option value="NVIDIA GeForse" selected>NVIDIA GeForse</option>
+                    <option value="AMD Radeon">AMD Radeon</option>
+                </select>
+            </div>
+
+            <div id="form_computer">
+                <div class="form_group">
+                    <label for="powerSupply" class="form_label">Мощность блока питания:</label>
+                    <input type="text" id="powerSupply" class="form_input" placeholder=" " />
+                </div>
+                <div id="monitor_btn">
+                    <span>Наличие монитора:</span>
+                    <label for="monitor_true"><input type="radio" id="monitor_true" name="monitor" value="true" checked>Есть</label>
+                    <label for="monitor_false"><input type="radio" id="monitor_false" name="monitor" value="false">Нету</label>
+                </div>
+                <div id="keyboard_btn">
+                    <span>Наличие клавиатуры:</span>
+                    <label for="keyboard_true"><input type="radio" id="keyboard_true" name="keyboard" value="true" checked>Есть</label>
+                    <label for="keyboard_false"><input type="radio" id="keyboard_false" name="keyboard" value="false">Нету</label>
+                </div>
+            </div>
+
+            <div id="form_laptop">
+                <div class="form_group">
+                    <label for="brend" class="form_label">Укажите бренд:</label>
+                    <input type="text" id="brend" class="form_input" placeholder=" " />
+                </div>
+                <div class="form_group">
+                    <label for="screenMatrix" class="form_label">Тип матрицы:</label>
+                    <input type="text" id="screenMatrix" class="form_input" placeholder=" " />
+                </div>
+                <div class="form_group">
+                    <label for="diagonal" class="form_label">Диагональ экрана:</label>
+                    <input type="text" id="diagonal" class="form_input" placeholder=" " />
+                </div>
+            </div>
+
+            <!-- <span>Имя</span><input type="text" id="textFirstName" value="John" required><br> -->
+            <input type="button" id="createComputer" class="buttons" value="Добавить новое устройство">
+            <input type="button" id="mainMenu" class="buttons" value="Главная страница">
+        </form>
+    </div>
+
+    <script src="./script1.js"></script>
+</body>
+</html>
