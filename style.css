@@ -17,7 +17,7 @@
   background-color: white;
 }
 
-#information .info_text_description .btn_toDo, #information .info_text_description .year {
+#information .info_text_description .btn_toDo, #information .info_text_description .type {
   cursor: pointer;
 }
 
@@ -69,5 +69,9 @@
 
 #all_info .text_description div, #all_info .info_text_description div {
   background-color: white;
+}
+
+#information, #all_info {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

@@ -12,7 +12,7 @@ class BaseClass{
         this.graphicsСard = graphicsСard; // наименование видеокарты
     }
 
-    get fullInformation(){
+    /* get fullInformation(){
         return this.type,
         this.year,
         this.processor,
@@ -20,7 +20,7 @@ class BaseClass{
         this.os,
         this.typeRom,
         this.graphicsСard;
-    }
+    } */
 
     set typeDevice(type){
         this.type = type;
@@ -117,7 +117,7 @@ function printInfo(arrComputers){
     // Первая (верхняя) строка таблицы
     form[0].innerHTML +=
         `<div class="text_description">
-            <div class="year">Год выпуска</div>
+            <div class="year">Тип устройства</div>
             <div class="processor">Название процессора</div>
             <div class="os">Наличие операционной системы</div>
             <div class="to_do">Действие</div>
@@ -126,7 +126,7 @@ function printInfo(arrComputers){
         // каждое i - информация о компьютере
         form[0].innerHTML +=
         `<div class="info_text_description">
-            <div class="year" id="year${i}"> ${arrComputers[i].year} </div>
+            <div class="type" id="type${i}"> ${arrComputers[i].type} </div>
             <div class="processor" id="processor${i}"> ${arrComputers[i].processor} </div>
             <div class="os" id="os${i}"> ${arrComputers[i].os} </div>
             <div class="btn_toDo">
@@ -141,15 +141,15 @@ function printInfo(arrComputers){
     // добавить обработчики
 
     for(let i = 0; i < arrComputers.length; i++){
-        let year = `year${i}`;
+        let type = `type${i}`;
         let edit = `edit${i}`;
         let remove = `remove${i}`;
         
-        document.getElementById(year).style.color = 'green';
+        document.getElementById(type).style.color = 'green';
         document.getElementById(edit).style.color = 'blue';
         document.getElementById(remove).style.color = 'red';
         
-        document.getElementById(year).addEventListener('click', function(){
+        document.getElementById(type).addEventListener('click', function(){
             printSelectInfo(i, arrComputers);
             display('all_info');
         });
@@ -178,14 +178,38 @@ function printInfo(arrComputers){
 
 function editComputer(i){
     display('create_сomputer');
+
+    document.getElementById('device').value = arrComputers[i].type;
     document.getElementById('year').value = arrComputers[i].year;
-    deleteComputer(i, arrComputers);
-    /* document.getElementById('mainMenu').style.display = 'none'; */
+    document.getElementById('processor').value = arrComputers[i].processor;
+    document.getElementById('typeRam').value = arrComputers[i].typeRam;
+    arrComputers[i].os = checkedBtnOs();
+    document.getElementById('typeRom').value = arrComputers[i].typeRom;
+    document.getElementById('graphicsСard').value = arrComputers[i].graphicsСard;
+
+    document.getElementById('powerSupply').value = arrComputers[i].powerSupply;
+    arrComputers[i].monitor = checkedBtnMonitor();
+    arrComputers[i].keyboard = checkedBtnKeyboard();
+
+    document.getElementById('brend').value = arrComputers[i].brend;
+    document.getElementById('screenMatrix').value = arrComputers[i].screenMatrix;
+    document.getElementById('diagonal').value = arrComputers[i].diagonal;
+
+    /* document.getElementById('createComputer').style.display = 'none';
+    document.getElementById('editComputer').style.display = 'block'; */
+
+    document.getElementById('editComputer').addEventListener('click', function(){
+        deleteComputer(i, arrComputers);
+        display('information');
+    });
 }
 
 function deleteComputer(i, arrComputers){
-    arrComputers.splice(i, 1);
+    arrComputers.splice(i, [arrComputers.length - 1]);
     printInfo(arrComputers);
+
+    /* document.getElementById('createComputer').style.display = 'block';
+    document.getElementById('editComputer').style.display = 'none'; */
 }
 
 //  Вывод всей информации на странице о выбранном устройстве
@@ -194,19 +218,37 @@ function printSelectInfo(i, arrComputers){
     let form = document.getElementById('all_info').getElementsByTagName('form');
     //первый инпут в форме
     form[0].innerHTML = '<br>';
-    form[0].innerHTML +=
-    `<div class="text_description">
-        <div class="type">Тип устройства</div>
-        <div class="year">Год выпуска</div>
-        <div class="processor">Название процессора</div>
-        <div class="os">Наличие операционной системы</div>
-        <div class="typeRam">Тип ОЗУ</div>
-        <div class="typeRom">Тип ПЗУ</div>
-        <div class="graphicsСard">Видеокарта</div>
-        <div class="powerSupply">Блок питания</div>
-        <div class="monitor">Монитор</div>
-        <div class="keyboard">Клавиатура</div>
-    </div>`
+    if(arrComputers[i].type == 'pc'){
+       form[0].innerHTML +=
+       `<div class="text_description">
+            <div class="type">Тип устройства</div>
+            <div class="year">Год выпуска</div>
+            <div class="processor">Название процессора</div>
+            <div class="os">Наличие операционной системы</div>
+            <div class="typeRam">Тип ОЗУ</div>
+            <div class="typeRom">Тип ПЗУ</div>
+            <div class="graphicsСard">Видеокарта</div>
+            <div class="powerSupply">Блок питания</div>
+            <div class="monitor">Монитор</div>
+            <div class="keyboard">Клавиатура</div>
+        </div>` 
+    }
+    else {
+        form[0].innerHTML +=
+        `<div class="text_description">
+            <div class="type">Тип устройства</div>
+            <div class="year">Год выпуска</div>
+            <div class="processor">Название процессора</div>
+            <div class="os">Наличие операционной системы</div>
+            <div class="typeRam">Тип ОЗУ</div>
+            <div class="typeRom">Тип ПЗУ</div>
+            <div class="graphicsСard">Видеокарта</div>
+            <div class="brend">Бренд</div>
+            <div class="screenMatrix">Тип матрицы</div>
+            <div class="diagonal">Диагональ экрана</div>
+        </div>`
+    }
+
     form[0].innerHTML +=
     `<div class="info_text_description">
         <div class="type" id="type${i}"> ${arrComputers[i].type} </div>
@@ -243,19 +285,46 @@ document.getElementById('device').addEventListener('click', function(){
     }
 })
 
+function checkedBtnOs(){
+    if(document.getElementById('os_true').checked){
+        return document.getElementById('os_true').value;
+    }
+    else{
+        return document.getElementById('os_false').value;
+    }
+}
+
+function checkedBtnMonitor(){
+    if(document.getElementById('monitor_true').checked){
+        return document.getElementById('monitor_true').value;
+    }
+    else{
+        return document.getElementById('monitor_false').value;
+    }
+}
+
+function checkedBtnKeyboard(){
+    if(document.getElementById('keyboard_true').checked){
+        return document.getElementById('keyboard_true').value;
+    }
+    else{
+        return document.getElementById('keyboard_false').value;
+    }
+}
+
 document.getElementById('createComputer').addEventListener('click', function(){
     
     let device = document.getElementById('device').value;
     let year = document.getElementById('year').value;
     let processor = document.getElementById('processor').value;
     let typeRam = document.getElementById('typeRam').value;
-    let os = document.getElementById('os_btn').value;
+    let os = checkedBtnOs();
     let typeRom = document.getElementById('typeRom').value;
     let graphicsСard = document.getElementById('graphicsСard').value;
 
     let powerSupply = document.getElementById('powerSupply').value;
-    let monitor = document.getElementById('monitor_btn').value;
-    let keyboard = document.getElementById('keyboard_btn').value;
+    let monitor = checkedBtnMonitor();
+    let keyboard = checkedBtnKeyboard();
 
     let brend = document.getElementById('brend').value;
     let screenMatrix = document.getElementById('screenMatrix').value;
@@ -263,7 +332,10 @@ document.getElementById('createComputer').addEventListener('click', function(){
 
     switch(device){
         case 'pc':
-            let computer = new Coputer();
+            arrComputers[arrComputers.length] = new Coputer(device, year, processor, typeRam, os,
+                typeRom, graphicsСard, powerSupply, monitor, keyboard);
+            
+            /* let computer = new Coputer();
             computer.typeDevice(device);
             computer.addYear(year);
             computer.addProcessor(processor);
@@ -276,14 +348,17 @@ document.getElementById('createComputer').addEventListener('click', function(){
             computer.addMonitor(monitor);
             computer.addKeyboard(keyboard);
 
-            arrComputers.push = computer;
+            arrComputers.push = computer; */
 
             display('information');
             printInfo(arrComputers);
             alert('Добавили новое устройство');
         break;
         case 'laptop':
-            let laptop = new Coputer();
+            arrComputers[arrComputers.length] = new Coputer(device, year, processor, typeRam, os,
+                typeRom, graphicsСard, brend, screenMatrix, diagonal);
+
+            /* let laptop = new Coputer();
             laptop.typeDevice(device);
             laptop.addYear(year);
             laptop.addProcessor(processor);
@@ -296,7 +371,7 @@ document.getElementById('createComputer').addEventListener('click', function(){
             laptop.addScreenMatrix(screenMatrix);
             laptop.addDiagonal(diagonal);
 
-            arrComputers.push = laptop;
+            arrComputers.push = laptop; */
 
             display('information');
             printInfo(arrComputers);
@@ -308,19 +383,4 @@ document.getElementById('createComputer').addEventListener('click', function(){
 document.getElementById('mainMenu').addEventListener('click', function(){
     display('information');
 });
-
-
-
-
-
-
-
-
-
-let computer1 = new Coputer('PC', 2020, 'intel', 6, true, 1000, 'NVIDIA GeForse', 500, true, true);
-arrComputers.push(computer1);
-let laptop1 = new Laptop('Laptop', 2020, 'intel', 6, true, 1000, 'NVIDIA GeForse', 'Lenovo', 'IPS', 25);
-arrComputers.push(laptop1);
-display('information');
-printInfo(arrComputers);
 
