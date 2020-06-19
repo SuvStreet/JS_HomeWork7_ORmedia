@@ -10,9 +10,15 @@
     <div id="information">
         <h1>Главная страница</h1>
         <form>
-            <!-- <div class="text_decoration">
-                <div class="text_name strong">Имя</div>
-            </div> -->
+            <!-- <div class="text_description" id="text_description">
+                <div class="type">Тип устройства</div>
+                <div class="year">Год выпуска</div>
+                <div class="to_do">Действие</div>
+            </div>
+            <div>
+                <h1>Тут пока пусто!</h1>
+            </div>
+            <input type="button" class="buttons" id="newComputerButton" value="Добавить новый компьютер"> -->
         </form>
     </div>
 
@@ -31,7 +37,7 @@
     <div id="create_сomputer">
         <h1>Добавление/Редактирование текущего устройства</h1>
         <form>
-            <div class="form_group">
+            <div class="form_group" id="fromGroupTypeDevice">
                 <label for="device" class="form_label">Выберите устройство:</label>
                 <select id="device">
                     <option value="pc" selected>PC</option>
@@ -40,15 +46,21 @@
             </div>
             <div class="form__group">
                 <label for="year" class="form_label">Год выпуска:</label>
-                <input type="text" id="year" class="form_input" placeholder=" " />
-            </div>
-            <!-- <div class="form__group">
-                <label for="processor" class="form_label">Наименование процессора:</label>
-                <input type="text" id="processor" class="form_input" placeholder=" " />
+                <input type="month" id="year" class="form_input" />
             </div>
             <div class="form__group">
-                <label for="typeRam" class="form_label">Объём ОЗУ:</label>
-                <input type="text" id="typeRam" class="form_input" placeholder=" " />
+                <label for="processor" class="form_label">Наименование процессора:</label>
+                <select id="processor">
+                    <option value="intel" selected>Intel</option>
+                    <option value="amd">AMD</option>
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="typeRam" class="form_label">Тип ОЗУ:</label>
+                <select id="typeRam">
+                    <option value="DDR4" selected>DDR4</option>
+                    <option value="DDR3">DDR3</option>
+                </select>
             </div>
             <div id="os_btn">
                 <span>Наличие OS:</span>
@@ -68,38 +80,52 @@
                     <option value="NVIDIA GeForse" selected>NVIDIA GeForse</option>
                     <option value="AMD Radeon">AMD Radeon</option>
                 </select>
-            </div>-->
+            </div>
 
             <div id="form_computer">
-                <!-- <div class="form_group">
+                <div class="form_group">
                     <label for="powerSupply" class="form_label">Мощность блока питания:</label>
                     <input type="text" id="powerSupply" class="form_input" placeholder=" " />
-                </div>  -->
+                </div> 
                 <div id="monitor_btn">
                     <span>Наличие монитора:</span>
                     <label for="monitor_true"><input type="radio" id="monitor_true" name="monitor" value="true" checked>Есть</label>
                     <label for="monitor_false"><input type="radio" id="monitor_false" name="monitor" value="false">Нету</label>
                 </div>
-                <!-- <div id="keyboard_btn">
+                <div id="keyboard_btn">
                     <span>Наличие клавиатуры:</span>
                     <label for="keyboard_true"><input type="radio" id="keyboard_true" name="keyboard" value="true" checked>Есть</label>
                     <label for="keyboard_false"><input type="radio" id="keyboard_false" name="keyboard" value="false">Нету</label>
-                </div>-->
+                </div>
             </div>
  
             <div id="form_laptop" style="display: none;">
                 <div class="form_group">
-                    <label for="brend" class="form_label">Укажите бренд:</label>
-                    <input type="text" id="brend" class="form_input" placeholder=" " />
+                    <label for="brend" class="form_label">Тип матрицы:</label>
+                    <select id="brend">
+                        <option value="ASUS" selected>ASUS</option>
+                        <option value="Lenovo">Lenovo</option>
+                        <option value="HP">HP</option>
+                        <option value="Dell">Dell</option>
+                        <option value="Acer">Acer</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                        <option value="MSI">MSI</option>
+                        <option value="Huawei">Huawei</option>
+                    </select>
                 </div>
-                <!-- <div class="form_group">
+                <div class="form_group">
                     <label for="screenMatrix" class="form_label">Тип матрицы:</label>
-                    <input type="text" id="screenMatrix" class="form_input" placeholder=" " />
+                    <select id="screenMatrix">
+                        <option value="IPS" selected>IPS</option>
+                        <option value="TN">TN</option>
+                        <option value="TN+Film">TN+Film</option>
+                        <option value="MVA">MVA</option>
+                    </select>
                 </div>
                 <div class="form_group">
                     <label for="diagonal" class="form_label">Диагональ экрана:</label>
-                    <input type="text" id="diagonal" class="form_input" placeholder=" " />
-                </div> -->
+                    <input type="number" id="diagonal" class="form_input" placeholder=" " />
+                </div>
             </div>
 
             <!-- <span>Имя</span><input type="text" id="textFirstName" value="John" required><br> -->
@@ -109,6 +135,7 @@
         </form>
     </div>
 
+    <script src="./scriptClass.js"></script>
     <script src="./script2.js"></script>
 </body>
 </html>

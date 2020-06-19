@@ -17,7 +17,7 @@
   background-color: white;
 }
 
-#information .info_text_description .btn_toDo, #information .info_text_description .type {
+#information .info_text_description .btn_toDo, #information .info_text_description .typeDevice {
   cursor: pointer;
 }
 
@@ -37,7 +37,7 @@
   background-color: white;
 }
 
-.info_text_description .type, .info_text_description .year, .info_text_description .processor, .info_text_description .typeRam, .info_text_description .os, .info_text_description .typeRom, .info_text_description .graphicsСard, .info_text_description .powerSupply, .info_text_description .monitor, .info_text_description .keyboard, .info_text_description .brend, .info_text_description .screenMatrix, .info_text_description .diagonal {
+.info_text_description .typeDevice, .info_text_description .year, .info_text_description .processor, .info_text_description .typeRam, .info_text_description .os, .info_text_description .typeRom, .info_text_description .graphicsСard, .info_text_description .powerSupply, .info_text_description .monitor, .info_text_description .keyboard, .info_text_description .brend, .info_text_description .screenMatrix, .info_text_description .diagonal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
