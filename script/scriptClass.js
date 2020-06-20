@@ -119,15 +119,3 @@ class Laptop extends BaseClass{
         return this.diagonal;
     };
 };
-
-/* let myMixin = (superclass) => class extends superclass{
-    test(){
-        alert('test from myMixin');
-    }
-}
-
-class myClass extends myMixin(Laptop){
-    constructor(t){
-        this.t = t;
-    }
-} */

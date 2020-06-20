@@ -4,105 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD ES6</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="information">
+    <div id="information" class="information">
         <h1>Главная страница</h1>
-        <form>
-            <!-- <div class="text_description" id="text_description">
-                <div class="type">Тип устройства</div>
-                <div class="year">Год выпуска</div>
-                <div class="to_do">Действие</div>
-            </div>
-            <div>
-                <h1>Тут пока пусто!</h1>
-            </div>
-            <input type="button" class="buttons" id="newComputerButton" value="Добавить новый компьютер"> -->
-        </form>
+        <form></form>
     </div>
 
-    <div id="all_info">
-        <h2>Подробная информация</h2>
-        <form>
-            <!-- <div class="detail_info">
-                <div class="details">
-                    <div class="elem">Имя</div>
-                </div>
-            </div>
-            <input type="button" id="mainMenu2" class="buttons" value="Главное меню"> -->
-        </form>
+    <div id="all_info" class="all_info">
+        <h1>Подробная информация</h1>
+        <form></form>
     </div>
 
-    <div id="create_сomputer">
-        <h1>Добавление/Редактирование текущего устройства</h1>
+    <div id="create_сomputer" class="create_сomputer">
+        <h1><span id="addSpan">Добавление</span>/<span id="editSpan">Редактирование</span> текущего устройства</h1>
         <form>
             <div class="form_group" id="fromGroupTypeDevice">
                 <label for="device" class="form_label">Выберите устройство:</label>
-                <select id="device">
+                <select id="device" class="device">
                     <option value="pc" selected>PC</option>
                     <option value="laptop">Ноутбук</option>
                 </select>
             </div>
             <div class="form__group">
                 <label for="year" class="form_label">Год выпуска:</label>
-                <input type="month" id="year" class="form_input" />
+                <input type="month" id="year" class="year" />
             </div>
             <div class="form__group">
                 <label for="processor" class="form_label">Наименование процессора:</label>
-                <select id="processor">
+                <select id="processor" class="processor">
                     <option value="intel" selected>Intel</option>
                     <option value="amd">AMD</option>
                 </select>
             </div>
             <div class="form__group">
                 <label for="typeRam" class="form_label">Тип ОЗУ:</label>
-                <select id="typeRam">
+                <select id="typeRam" class="typeRam">
                     <option value="DDR4" selected>DDR4</option>
                     <option value="DDR3">DDR3</option>
                 </select>
             </div>
-            <div id="os_btn">
-                <span>Наличие OS:</span>
-                <label for="os_true"><input type="radio" id="os_true" name="os" value="true" checked>Есть</label>
-                <label for="os_false"><input type="radio" id="os_false" name="os" value="false">Нету</label>
+            <div id="os_btn" class="os_btn">
+                <span class="osSpan">Наличие OS:</span>
+                <div class="formRadioBtn">
+                    <label for="os_true" class="os_true"><input type="radio" id="os_true" name="os" value="true" checked>Есть</label>
+                    <label for="os_false" class="os_false"><input type="radio" id="os_false" name="os" value="false">Нету</label>
+                </div>
             </div>
             <div class="form_group">
                 <label for="typeRom" class="form_label">Тип ПЗУ:</label>
-                <select id="typeRom">
+                <select id="typeRom" class="typeRom">
                     <option value="HDD" selected>HDD</option>
                     <option value="SSD">SSD</option>
                 </select>
             </div>
             <div class="form_group">
                 <label for="graphicsСard" class="form_label">Наименование видеокарты:</label>
-                <select id="graphicsСard">
+                <select id="graphicsСard" class="graphicsСard">
                     <option value="NVIDIA GeForse" selected>NVIDIA GeForse</option>
                     <option value="AMD Radeon">AMD Radeon</option>
                 </select>
             </div>
 
-            <div id="form_computer">
-                <div class="form_group">
+            <div id="form_computer" class="form_computer">
+                <div class="powerSupply">
                     <label for="powerSupply" class="form_label">Мощность блока питания:</label>
-                    <input type="text" id="powerSupply" class="form_input" placeholder=" " />
+                    <input type="number" id="powerSupply" class="inputPowerSupply" />
                 </div> 
-                <div id="monitor_btn">
-                    <span>Наличие монитора:</span>
-                    <label for="monitor_true"><input type="radio" id="monitor_true" name="monitor" value="true" checked>Есть</label>
-                    <label for="monitor_false"><input type="radio" id="monitor_false" name="monitor" value="false">Нету</label>
+                <div id="monitor_btn" class="monitor_btn">
+                    <span class="monitorSpan">Наличие монитора:</span>
+                    <div class="formRadioBtnMonitor">
+                        <label for="monitor_true" class="monitor_true"><input type="radio" id="monitor_true" name="monitor" value="true" checked>Есть</label>
+                        <label for="monitor_false" class="monitor_false"><input type="radio" id="monitor_false" name="monitor" value="false">Нету</label>
+                    </div>
                 </div>
-                <div id="keyboard_btn">
-                    <span>Наличие клавиатуры:</span>
-                    <label for="keyboard_true"><input type="radio" id="keyboard_true" name="keyboard" value="true" checked>Есть</label>
-                    <label for="keyboard_false"><input type="radio" id="keyboard_false" name="keyboard" value="false">Нету</label>
+                <div id="keyboard_btn" class="keyboard_btn">
+                    <span class="keyboardSpan">Наличие клавиатуры:</span>
+                    <div class="formRadioBtnKeyboard">
+                        <label for="keyboard_true" class="keyboard_true"><input type="radio" id="keyboard_true" name="keyboard" value="true" checked>Есть</label>
+                        <label for="keyboard_false" class="keyboard_false"><input type="radio" id="keyboard_false" name="keyboard" value="false">Нету</label>
+                    </div>
                 </div>
             </div>
  
-            <div id="form_laptop" style="display: none;">
+            <div id="form_laptop" class="form_laptop" style="display: none;">
                 <div class="form_group">
                     <label for="brend" class="form_label">Тип матрицы:</label>
-                    <select id="brend">
+                    <select id="brend" class="brendSelect">
                         <option value="ASUS" selected>ASUS</option>
                         <option value="Lenovo">Lenovo</option>
                         <option value="HP">HP</option>
@@ -115,7 +105,7 @@
                 </div>
                 <div class="form_group">
                     <label for="screenMatrix" class="form_label">Тип матрицы:</label>
-                    <select id="screenMatrix">
+                    <select id="screenMatrix" class="screenMatrixSelect">
                         <option value="IPS" selected>IPS</option>
                         <option value="TN">TN</option>
                         <option value="TN+Film">TN+Film</option>
@@ -124,18 +114,21 @@
                 </div>
                 <div class="form_group">
                     <label for="diagonal" class="form_label">Диагональ экрана:</label>
-                    <input type="number" id="diagonal" class="form_input" placeholder=" " />
+                    <input type="number" id="diagonal" class="form_input" />
                 </div>
             </div>
 
             <!-- <span>Имя</span><input type="text" id="textFirstName" value="John" required><br> -->
-            <input type="button" id="createComputer" class="buttons" value="Добавить новое устройство">
-            <input type="button" id="editComputer" class="buttons" value="Изменить текущее устройство" style="display: none;">
-            <input type="button" id="mainMenu" class="buttons" value="Главная страница">
+            <div class="formButtons">
+                <input type="button" id="createComputer" class="createComputer" value="Добавить новое устройство">
+                <input type="button" id="editComputer" class="editComputer" value="Изменить текущее устройство" style="display: none;">
+                <input type="button" id="mainMenu" class="mainMenu" value="Главная страница">
+            </div>
+            
         </form>
     </div>
 
-    <script src="./scriptClass.js"></script>
-    <script src="./script2.js"></script>
+    <script src="./script/scriptClass.js"></script>
+    <script src="./script/script.js"></script>
 </body>
 </html>

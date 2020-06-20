@@ -46,16 +46,13 @@ function display(visibleId){
 //отрисовка всей информации о компьютерах, главная страница
 function printInfo(arrComputers){
     let form = document.getElementById('information').getElementsByTagName('form');
-
-    console.log(arrComputers); 
-
     if(arrComputers.length === 0){
         form[0].innerHTML =
         `<br/><div class="text_description">
             <div class="typeDevice">Тип устройства</div>
             <div class="year">Год выпуска</div>
             <div class="os">Наличие операционной системы</div>
-            <div class="to_do">Действие</div>
+            <div class="to_do"></div>
         </div>`;
         form[0].innerHTML += 
         `<div>
@@ -66,15 +63,18 @@ function printInfo(arrComputers){
         document.getElementById('newComputerButton').addEventListener('click', function(){
             display('create_сomputer');
             clearInput();
+
+            document.getElementById('editSpan').style.color = 'black';
+            document.getElementById('addSpan').style.color = 'blue';
         });
     } 
     else {
         form[0].innerHTML =
-        `<br/><div class="text_description">
+        `<div class="text_description">
             <div class="typeDevice">Тип устройства</div>
             <div class="year">Год выпуска</div>
             <div class="os">Наличие операционной системы</div>
-            <div class="to_do">Действие</div>
+            <div class="to_do"></div>
         </div>`;
         for(let i = 0; i < arrComputers.length; i++){
         // каждое i - информация о компьютере
@@ -84,12 +84,12 @@ function printInfo(arrComputers){
             <div class="year" id="year${i}"> ${arrComputers[i].addYear} </div>
             <div class="os" id="os${i}"> ${arrComputers[i].addOs === 'true' ? 'есть' : 'нету'} </div>
             <div class="btn_toDo">
-                <div class="edit" id="edit${i}">Редактировать</div>
-                <div class="remove" id="remove${i}">Удалить</div>
+                <input type="button" class="edit" id="edit${i}" value="Редактировать" />
+                <input type="button" class="remove" id="remove${i}" value="Удалить" />
             </div>
         </div>`;
     };
-    form[0].innerHTML += `<br/><input type="button" class="buttons" id="newComputerButton" value="Добавить новое устройство">`;
+    form[0].innerHTML += `<br/><input type="button" class="newComputerButton" id="newComputerButton" value="Добавить новое устройство">`;
 
     // добавить обработчики
     for(let i = 0; i < arrComputers.length; i++){
@@ -117,10 +117,12 @@ function printInfo(arrComputers){
     document.getElementById('newComputerButton').addEventListener('click', function(){
         display('create_сomputer');
 
-        document.getElementById('createComputer').style.display = 'block';
+        document.getElementById('createComputer').style.display = 'inline-block';
         document.getElementById('editComputer').style.display = 'none';
-        document.getElementById('fromGroupTypeDevice').style.display = 'block';
+        document.getElementById('fromGroupTypeDevice').style.display = 'flex';
 
+        document.getElementById('editSpan').style.color = 'black';
+        document.getElementById('addSpan').style.color = 'blue';
         clearInput();
     });
     } 
@@ -130,8 +132,11 @@ function printInfo(arrComputers){
 function editComputer(i){
     display('create_сomputer');
 
+    document.getElementById('editSpan').style.color = 'blue';
+        document.getElementById('addSpan').style.color = 'black';
+
     document.getElementById('createComputer').style.display = 'none';
-    document.getElementById('editComputer').style.display = 'block';
+    document.getElementById('editComputer').style.display = 'inline-block';
     document.getElementById('fromGroupTypeDevice').style.display = 'none';
 
     document.getElementById('year').value = arrComputers[i].addYear;
@@ -158,9 +163,6 @@ function editComputer(i){
 
     document.getElementById('editComputer').addEventListener('click', function(){   
         if(emptiness(arrComputers[i].typeDevice) === true){
-
-            /* console.log(arrComputers[i].typeDevice); */
-
             arrComputers[i].addYear = document.getElementById('year').value;
             arrComputers[i].addProcessor = document.getElementById('processor').value;
             arrComputers[i].addTypeRam = document.getElementById('typeRam').value;
@@ -182,9 +184,9 @@ function editComputer(i){
             printInfo(arrComputers); // выводим свежую информацию
             display('information'); // возвращаемся на главную страницу
 
-            document.getElementById('createComputer').style.display = 'block';
+            document.getElementById('createComputer').style.display = 'inline-block';
             document.getElementById('editComputer').style.display = 'none';
-            document.getElementById('fromGroupTypeDevice').style.display = 'block';
+            document.getElementById('fromGroupTypeDevice').style.display = 'flex';
 
             // записываем изменения в localStorage
             localStorage.setItem('saveArr', JSON.stringify(arrComputers));
@@ -278,12 +280,12 @@ function printSelectInfo(i, arrComputers){
             <div class="graphicsСard" id="graphicsСard${i}">${arrComputers[i].addGraphicsСard}</div>
             <div class="brend" id="brend${i}">${arrComputers[i].addBrend}</div>
             <div class="screenMatrix" id="screenMatrix${i}">${arrComputers[i].addScreenMatrix}</div>
-            <div class="diagonal" id="diagonal${i}">${arrComputers[i].addDiagonal}</div>
+            <div class="diagonal" id="diagonal${i}">${arrComputers[i].addDiagonal}"</div>
         </div>`;
     };
 
     form[0].innerHTML += '<br>' +
-    `<input type="button" class="buttons" id="mainMenu2" value="Главное меню">`;
+    `<input type="button" class="mainMenu2" id="mainMenu2" value="Главное меню">`;
         
     document.getElementById('mainMenu2').addEventListener('click', function(){
         display('information');
@@ -335,24 +337,33 @@ function checkedBtnKeyboard(){
 function emptiness(type){
     switch(type){
         case 'pc':
-            if(document.getElementById('powerSupply').value.trim() === "" || document.getElementById('year').value === ""){
-                alert('Заполните все поля!');
+            if(document.getElementById('powerSupply').value > 18 ){
+                if(document.getElementById('powerSupply').value.trim() === "" || document.getElementById('year').value === ""){
+                    alert('Заполните все поля!');
+                }
+                else{
+                    return true;
+                }
             }
             else{
-                return true;
+                alert('Мощность блока питания не должна ровнятся менее 18W!');
             }
         break;
         case 'laptop':
-            if(document.getElementById('year').value === "" || document.getElementById('diagonal').value === ""){
-                alert('Заполните все поля!');
+            if(document.getElementById('diagonal').value > 12 ){
+                if(document.getElementById('year').value === "" || document.getElementById('diagonal').value === ""){
+                    alert('Заполните все поля!');
+                }
+                else{
+                    return true;
+                }
             }
             else{
-                return true;
+                alert(`Диагональ экрана не должна быть менее 12"!`);
             }
         break;
     }
 }
-
 
 // есть или нету OS
 function checkedBtnOS(){
