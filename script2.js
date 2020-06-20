@@ -1,19 +1,20 @@
 let arrComputers = []; // массив всех компьтеров
-
 let allDevice; // хранит компьютеры, ноутбуки
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    let x = JSON.parse(localStorage.getItem('saveArr'));
-    for(let i = 0; i < x.length; i++){
-        if (x[i].typeDevice === 'pc'){
-            allDevice = new Computer(x[i].typeDevice, x[i].year, x[i].processor, x[i].typeRam, x[i].os,
-                x[i].typeRom, x[i].graphicsСard, x[i].powerSupply, x[i].monitor, x[i].keyboard);
-            arrComputers.push(allDevice);
-        }
-        else {
-            allDevice = new Laptop(x[i].typeDevice, x[i].year, x[i].processor, x[i].typeRam, x[i].os,
-                x[i].typeRom, x[i].graphicsСard, x[i].brend, x[i].screenMatrix, x[i].diagonal);
-            arrComputers.push(allDevice);
+    if (localStorage.key('saveArr') === 'saveArr'){
+        let x = JSON.parse(localStorage.getItem('saveArr'));
+        for(let i = 0; i < x.length; i++){
+            if (x[i].typeDevice === 'pc'){
+                allDevice = new Computer(x[i].typeDevice, x[i].year, x[i].processor, x[i].typeRam, x[i].os,
+                    x[i].typeRom, x[i].graphicsСard, x[i].powerSupply, x[i].monitor, x[i].keyboard);
+                arrComputers.push(allDevice);
+            }
+            else {
+                allDevice = new Laptop(x[i].typeDevice, x[i].year, x[i].processor, x[i].typeRam, x[i].os,
+                    x[i].typeRom, x[i].graphicsСard, x[i].brend, x[i].screenMatrix, x[i].diagonal);
+                arrComputers.push(allDevice);
+            }
         }
     }
     display('information');
