@@ -133,7 +133,7 @@ function editComputer(i){
     display('create_сomputer');
 
     document.getElementById('editSpan').style.color = 'blue';
-        document.getElementById('addSpan').style.color = 'black';
+    document.getElementById('addSpan').style.color = 'black';
 
     document.getElementById('createComputer').style.display = 'none';
     document.getElementById('editComputer').style.display = 'inline-block';
@@ -191,8 +191,16 @@ function editComputer(i){
             // записываем изменения в localStorage
             localStorage.setItem('saveArr', JSON.stringify(arrComputers));
         }
+        /* else {
+            break
+        } */
     });
 };
+
+/* let arr1 = [1, 2, 3]
+
+let c = new Laptop();  
+console.log(c.test(arr1));//test from MyMixin */
 
 // удаление устройства
 function deleteComputer(i, arrComputers){

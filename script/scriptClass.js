@@ -90,12 +90,22 @@ class Computer extends BaseClass{
     };
 };
 
-class Laptop extends BaseClass{
-    constructor(typeDevice, year, processor, typeRam, os, typeRom, graphicsСard, brend, screenMatrix, diagonal){
+let MyMixin = (superclass) => class extends superclass {  
+    test(arr) {
+        /* arr.filter(elem => { */
+            return arr;
+            /* return alem !== " "; */
+        /* }) */
+    }
+};
+
+class Laptop extends MyMixin(BaseClass){
+    constructor(typeDevice, year, processor, typeRam, os, typeRom, graphicsСard, brend, screenMatrix, diagonal /* arr */){
         super(typeDevice, year, processor, typeRam, os, typeRom, graphicsСard);
         this.brend = brend;
         this.screenMatrix = screenMatrix;
         this.diagonal = diagonal;
+        /* this.test(arr) = arr; */
     }
 
     set addBrend(newBrend){
@@ -118,4 +128,14 @@ class Laptop extends BaseClass{
     get addDiagonal(){
         return this.diagonal;
     };
+
+
 };
+
+
+ 
+/* class Laptop extends MyMixin(BaseClass) {  
+    
+} */
+/* let c = new Laptop();  
+c.test();//test from MyMixin */
